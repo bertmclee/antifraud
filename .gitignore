@@ -2,7 +2,7 @@ venv
 .idea
 antifraud.egg-info
 dist
-data/*
+# data/*
 !data/S-FFSD.zip
 !data/YelpChi.zip
 !data/Amazon.zip
