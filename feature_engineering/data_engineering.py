@@ -126,25 +126,50 @@ def data_engineer_benchmark(feat_df):
     return post_fe_df
 
 
-def calcu_trading_entropy(
-    data_2: pd.DataFrame
-) -> float:
-    """calculate trading entropy of given data
+# def calcu_trading_entropy(
+#     data_2: pd.DataFrame
+# ) -> float:
+#     """calculate trading entropy of given data
+#     Args:
+#         data (pd.DataFrame): 2 cols, Amount and Type
+#     Returns:
+#         float: entropy
+#     """
+#     # if empty
+#     if len(data_2) == 0:
+#         return 0
+
+#     amounts = np.array([data_2[data_2['Type'] == type]['Amount'].sum()
+#                        for type in data_2['Type'].unique()])
+#     proportions = amounts / amounts.sum() if amounts.sum() else np.ones_like(amounts)
+#     ent = -np.array([proportion*np.log(1e-5 + proportion)
+#                     for proportion in proportions]).sum()
+#     return ent
+
+
+def calcu_trading_entropy(data_2: pd.DataFrame) -> float:
+    """calculate trading entropy of given data with handling negative amounts
     Args:
         data (pd.DataFrame): 2 cols, Amount and Type
     Returns:
         float: entropy
     """
-    # if empty
     if len(data_2) == 0:
         return 0
 
-    amounts = np.array([data_2[data_2['Type'] == type]['Amount'].sum()
-                       for type in data_2['Type'].unique()])
-    proportions = amounts / amounts.sum() if amounts.sum() else np.ones_like(amounts)
-    ent = -np.array([proportion*np.log(1e-5 + proportion)
-                    for proportion in proportions]).sum()
+    # Use absolute values of amounts
+    amounts = np.array([abs(data_2[data_2['Type'] == type]['Amount']).sum()
+                        for type in data_2['Type'].unique()])
+    total_amount = amounts.sum()
+    if total_amount > 0:
+        proportions = amounts / total_amount
+    else:
+        proportions = np.zeros_like(amounts)
+
+    ent = -np.array([proportion * np.log(1e-5 + proportion)
+                     for proportion in proportions]).sum()
     return ent
+
 
 
 def span_data_2d(

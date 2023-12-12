@@ -34,6 +34,8 @@ def parse_args():
         yaml_file = "config/gtan_cfg.yaml"
     elif method in ['rgtan']:
         yaml_file = "config/rgtan_cfg.yaml"
+    elif method in ['ggtan']:
+        yaml_file = "config/ggtan_cfg.yaml"
     else:
         raise NotImplementedError("Unsupported method.")
 
@@ -121,6 +123,13 @@ def main(args):
             args['dataset'], args['test_size'])
         rgtan_main(feat_data, g, train_idx, test_idx, labels, args,
                    cat_features, neigh_features, nei_att_head=args['nei_att_heads'][args['dataset']])
+    elif args['method'] == ('ggtan'):
+        from methods.ggtan.ggtan_main import ggtan_main, load_ggtan_data
+        feat_data, labels, train_idx, test_idx, g, cat_features, source_emb, target_emb = \
+                    load_ggtan_data(args['dataset'], args['test_size'], args['device'], \
+                                    args['gat_epochs'],args['gat_learning_rate'], \
+                                    args['gat_max_class_weight'], args['gat_use_lpe'])
+        ggtan_main(feat_data, g, train_idx, test_idx, labels, args, cat_features, source_emb, target_emb, args['gtan_use_pese'])
     else:
         raise NotImplementedError("Unsupported method. ")
 

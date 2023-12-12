@@ -12,6 +12,7 @@ Source codes implementation of papers:
 - `STAGN`: Graph Neural Network for Fraud Detection via Spatial-temporal Attention, in TKDE2020
 - `GTAN`: Semi-supervised Credit Card Fraud Detection via Attribute-driven Graph Representation, in AAAI2023
 - `RGTAN`: Enhancing Attribute-driven Fraud Detection with Risk-aware Graph Representation, 
+- `GGTAN`: TODO
 
 
 
@@ -20,7 +21,7 @@ Source codes implementation of papers:
 ### Data processing
 1. Run `unzip /data/Amazon.zip` and `unzip /data/YelpChi.zip` to unzip the datasets; 
 2. Run `python feature_engineering/data_process.py
-`
+
 to pre-process all datasets needed in this repo.
 
 ### Training & Evalutaion
@@ -41,18 +42,19 @@ python main.py --method stagn
 ```
 Configuration files can be found in `config/mcnn_cfg.yaml`, `config/stan_cfg.yaml` and `config/stagn_cfg.yaml`, respectively.
 
-Models in `GTAN` and `RGTAN` can be run via:
+Models in `GTAN`, `RGTAN` and `GGTAN` can be run via:
 ```
 python main.py --method gtan
 python main.py --method rgtan
+python main.py --method ggtan
 ```
-For specification of hyperparameters, please refer to `config/gtan_cfg.yaml` and `config/rgtan_cfg.yaml`.
+For specification of hyperparameters, please refer to `config/gtan_cfg.yaml`, `config/rgtan_cfg.yaml`, and `congif/ggtan_cfg.yaml`.
 
 
 
 ### Data Description
 
-There are three datasets, YelpChi, Amazon and S-FFSD, utilized for model experiments in this repository.
+There are four datasets, YelpChi, Amazon, S-FFSD, IBM utilized for model experiments in this repository.
 
 <!-- YelpChi and Amazon can be downloaded from [here](https://github.com/YingtongDou/CARE-GNN/tree/master/data) or [dgl.data.FraudDataset](https://docs.dgl.ai/api/python/dgl.data.html#fraud-dataset).
 
@@ -72,9 +74,39 @@ S-FFSD is a simulated & small version of finacial fraud semi-supervised dataset.
 |Labels|np.int32|from **0** to **2**|**2** denotes **unlabeled**||
 
 
+#### IBM Credit Card Transaction Dataset
+
+The IBM Credit Card Transaction Dataset is a publicly available synthetic dataset, primarily used for research and testing in fraud detection models. It contains simulated transaction data provided by IBM, designed to closely approximate real-world financial transactions. The dataset includes a range of features such as transaction amounts, card types, and transaction locations. 
+
+##### Dataset Highlights
+
+- **Total Transactions**: 24 million unique transactions.
+- **Unique Merchants**: 6,000.
+- **Unique Cards**: 100,000.
+- **Fraudulent Transactions**: Approximately 30,000 samples, constituting 0.1% of total transactions.
+
+###### Key Characteristics
+
+- **Class Imbalance**: Reflects real-world scenarios with a higher number of non-fraudulent transactions.
+- **Fraud Labels**: Each transaction includes a label indicating whether it is fraudulent.
+- **Data Nature**: Synthetic and not linked to any real customers or financial institutions.
+
+##### Data Accessibility
+
+- **Local Download**: [IBM Dataset Link](https://ibm.ent.box.com/v/tabformer-data).
+- **Kaggle Platform**: [Kaggle Dataset Link](https://www.kaggle.com/datasets/ealtman2019/credit-card-transactions).
+
+##### Usage
+
+The dataset is used in our experiments on a subset of approximately 100,000 samples to demonstrate the effectiveness in fraud detection scenarios.
+
+
 > We are looking for interesting public datasets! If you have any suggestions, please let us know!
 
 ## Test Result
+
+TODO
+ 
 The performance of five models tested on three datasets are listed as follows:
 | |YelpChi| | |Amazon| | |S-FFSD| | |
 |:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
@@ -108,7 +140,9 @@ networkx         2.6.3
 scipy            1.7.3
 torch            1.12.1+cu113
 dgl-cu113        0.8.1
+torch_geometric  2.4.0
 ```
+
 ## Citing
 
 If you find *Antifraud* is useful for your research, please consider citing the following papers:
