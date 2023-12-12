@@ -20,7 +20,8 @@ Source codes implementation of papers:
 
 ### Data processing
 1. Run `unzip /data/Amazon.zip` and `unzip /data/YelpChi.zip` to unzip the datasets; 
-2. Run `python feature_engineering/data_process.py
+2. Run `python feature_engineering/data_process.py`
+3. If you just want to use FFSD and IBM dataset with `GTAN` and `GGTAN` method, then run `python feature_engineering/data_process_ggtan.py`
 
 to pre-process all datasets needed in this repo.
 
@@ -51,57 +52,48 @@ python main.py --method ggtan
 For specification of hyperparameters, please refer to `config/gtan_cfg.yaml`, `config/rgtan_cfg.yaml`, and `congif/ggtan_cfg.yaml`.
 
 
-
 ### Data Description
 
-There are four datasets, YelpChi, Amazon, S-FFSD, IBM utilized for model experiments in this repository.
+This repository utilizes four datasets for model experiments: YelpChi, Amazon, S-FFSD, and IBM.
 
-<!-- YelpChi and Amazon can be downloaded from [here](https://github.com/YingtongDou/CARE-GNN/tree/master/data) or [dgl.data.FraudDataset](https://docs.dgl.ai/api/python/dgl.data.html#fraud-dataset).
+#### YelpChi and Amazon Datasets
+These datasets are sourced from [CARE-GNN](https://dl.acm.org/doi/abs/10.1145/3340531.3411903) and the original data can be found in [this repository](https://github.com/YingtongDou/CARE-GNN/tree/master/data).
 
-Put them in `/data` directory and run `unzip /data/Amazon.zip` and `unzip /data/YelpChi.zip` to unzip the datasets. -->
+#### S-FFSD Dataset
+S-FFSD is a simulated, smaller version of a financial fraud semi-supervised dataset. Its description is as follows:
 
-YelpChi and Amazon datasets are from [CARE-GNN](https://dl.acm.org/doi/abs/10.1145/3340531.3411903), whose original source data can be found in [this repository](https://github.com/YingtongDou/CARE-GNN/tree/master/data).
-
-S-FFSD is a simulated & small version of finacial fraud semi-supervised dataset. Description of S-FFSD are listed as follows:
-|Name|Type|Range|Note|
-|--|--|--|--|
-|Time|np.int32|from $\mathbf{0}$ to $\mathbf{N}$|$\mathbf{N}$ denotes the number of trasactions.  |
-|Source|string|from $\mathbf{S_0}$ to $\mathbf{S}_{ns}$|$ns$ denotes the number of transaction senders.|
-|Target|string|from $\mathbf{T_0}$  to $\mathbf{T}_{nt}$ | $nt$ denotes the number of transaction reveicers.|
-|Amount|np.float32|from **0.00** to **np.inf**|The amount of each transaction. |
-|Location|string|from $\mathbf{L_0}$  to $\mathbf{L}_{nl}$ |$nl$ denotes the number of transacation locations.|
-|Type|string|from $\mathbf{TP_0}$ to $\mathbf{TP}_{np}$|$np$ denotes the number of different transaction types. |
-|Labels|np.int32|from **0** to **2**|**2** denotes **unlabeled**||
-
+| Name     | Type       | Range                  | Note                                    |
+|----------|------------|------------------------|-----------------------------------------|
+| Time     | np.int32   | 0 to N                 | N: Number of transactions.              |
+| Source   | string     | S_0 to S_ns            | ns: Number of transaction senders.      |
+| Target   | string     | T_0 to T_nt            | nt: Number of transaction receivers.    |
+| Amount   | np.float32 | 0.00 to np.inf         | Transaction amount.                     |
+| Location | string     | L_0 to L_nl            | nl: Number of transaction locations.    |
+| Type     | string     | TP_0 to TP_np          | np: Number of different transaction types. |
+| Labels   | np.int32   | 0 to 2                 | 2 denotes 'unlabeled'.                  |
 
 #### IBM Credit Card Transaction Dataset
-
-The IBM Credit Card Transaction Dataset is a publicly available synthetic dataset, primarily used for research and testing in fraud detection models. It contains simulated transaction data provided by IBM, designed to closely approximate real-world financial transactions. The dataset includes a range of features such as transaction amounts, card types, and transaction locations. 
+This is a publicly available synthetic dataset for fraud detection research, containing simulated transaction data provided by IBM.
 
 ##### Dataset Highlights
-
 - **Total Transactions**: 24 million unique transactions.
 - **Unique Merchants**: 6,000.
 - **Unique Cards**: 100,000.
-- **Fraudulent Transactions**: Approximately 30,000 samples, constituting 0.1% of total transactions.
+- **Fraudulent Transactions**: 30,000 samples (0.1% of total transactions).
 
-###### Key Characteristics
-
-- **Class Imbalance**: Reflects real-world scenarios with a higher number of non-fraudulent transactions.
-- **Fraud Labels**: Each transaction includes a label indicating whether it is fraudulent.
-- **Data Nature**: Synthetic and not linked to any real customers or financial institutions.
+##### Key Characteristics
+- **Class Imbalance**: More non-fraudulent transactions, reflecting real-world scenarios.
+- **Fraud Labels**: Indicates whether a transaction is fraudulent.
+- **Data Nature**: Synthetic, not linked to real customers or financial institutions.
 
 ##### Data Accessibility
-
-- **Local Download**: [IBM Dataset Link](https://ibm.ent.box.com/v/tabformer-data).
-- **Kaggle Platform**: [Kaggle Dataset Link](https://www.kaggle.com/datasets/ealtman2019/credit-card-transactions).
+- **Local Download**: [IBM Dataset Link](https://ibm.ent.box.com/v/tabformer-data)
+- **Kaggle**: [Kaggle Dataset Link](https://www.kaggle.com/datasets/ealtman2019/credit-card-transactions)
 
 ##### Usage
+The dataset is used in our experiments on a sample of approximately 100,000 transactions.
 
-The dataset is used in our experiments on a subset of approximately 100,000 samples to demonstrate the effectiveness in fraud detection scenarios.
-
-
-> We are looking for interesting public datasets! If you have any suggestions, please let us know!
+> Seeking more public datasets for interesting studies! Suggestions are welcome.
 
 ## Test Result
 
