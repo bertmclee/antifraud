@@ -28,7 +28,7 @@ from . import *
 
 def ggtan_main(feat_df, graph, train_idx, test_idx, labels, args, cat_features, source_emb, target_emb, gtan_use_pese=False):
     """
-    Main function for the GTAN model training and evaluation.
+    Main function for the GGTAN model training and evaluation.
 
     Args:
         feat_df (DataFrame): Feature dataframe.
@@ -565,7 +565,7 @@ def calculate_node_features(grouped_data, location_encoder, type_encoder):
 
 def laplacian_positional_encoding_sparse(graph, dim):
     '''
-    This is for the Transaction Graph (GTAN)
+    This is for the Temporal Transaction Graph (GTAN)
     '''
     print("Starting Laplacian Positional Encoding...")
 
@@ -593,7 +593,7 @@ def laplacian_positional_encoding_sparse(graph, dim):
 
 def random_walk_structural_encoding(graph, walk_length, dim):
     '''
-    This is for the Transaction Graph (GTAN)
+    This is for the Temporal Transaction Graph (GTAN)
     '''
     num_nodes = graph.num_nodes()
     context = torch.zeros((num_nodes, dim))
