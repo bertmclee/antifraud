@@ -12,7 +12,7 @@ Source codes implementation of papers:
 - `STAGN`: Graph Neural Network for Fraud Detection via Spatial-temporal Attention, in TKDE2020
 - `GTAN`: Semi-supervised Credit Card Fraud Detection via Attribute-driven Graph Representation, in AAAI2023
 - `RGTAN`: Enhancing Attribute-driven Fraud Detection with Risk-aware Graph Representation, 
-- `GGTAN`: TODO
+- `GGTAN`: GGTAN: A Novel GAT-Enhanced Graph Temporal Attention Network for Advanced Fraud Detection in Financial Transactions
 
 
 
@@ -95,10 +95,8 @@ The dataset is used in our experiments on a sample of approximately 100,000 tran
 
 > Seeking more public datasets for interesting studies! Suggestions are welcome.
 
-## Test Result
+<!--## Test Result
 
-TODO
- 
 The performance of five models tested on three datasets are listed as follows:
 | |YelpChi| | |Amazon| | |S-FFSD| | |
 |:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
@@ -108,9 +106,22 @@ The performance of five models tested on three datasets are listed as follows:
 |STAGN|- |- | -| -| -| -|0.7659|0.6852|0.3599|
 |GTAN|0.9241|0.7988|0.7513|0.9630|0.9213|0.8838|0.8286|0.7336|0.6585|
 |RGTAN|0.9498|0.8492|0.8241|0.9750|0.9200|0.8926|0.8461|0.7513|0.6939|
+-->
 
+## Model Performance Summary on S-FFSD and IBM Datasets
+
+| Model | S-FFSD AUC | S-FFSD F1 | S-FFSD AP | IBM AUC | IBM F1 | IBM AP |
+|-------|------------|-----------|-----------|--------|-------|--------|
+| XGB   | 0.7931     | 0.6512    | 0.4830    | 0.9272 | 0.8941| 0.8111 |
+| MCNN  | 0.7129     | 0.6861    | 0.3309    | 0.8771±0.001 | 0.7814±0.004 | 0.4084±0.007 |
+| GAT   | 0.7302±0.005| 0.6147±0.006 | -       | 0.9256±0.001 | 0.8325±0.025 | - |
+| GTAN  | 0.8286     | 0.7336    | 0.6585    | 0.9140±0.010 | 0.6959±0.059 | 0.5424±0.040 |
+| GGTAN | 0.8951±0.003| 0.7853±0.006 | 0.7530±0.006 | 0.9952±0.000 | 0.9496±0.002 | 0.9646±0.002 |
+
+
+<!--
 > `MCNN`, `STAN` and `STAGN` are presently not applicable to YelpChi and Amazon datasets.
-
+-->
 ## Repo Structure
 The repository is organized as follows:
 - `models/`: the pre-trained models for each method. The readers could either train the models by themselves or directly use our pre-trained models;
