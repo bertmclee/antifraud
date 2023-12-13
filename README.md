@@ -19,21 +19,13 @@ Source codes implementation of papers:
 ## Usage
 
 ### Data processing
-1. Run `unzip /data/Amazon.zip` and `unzip /data/YelpChi.zip` to unzip the datasets; 
+1. Run `unzip /data/Amazon.zip`, `unzip /data/YelpChi.zip`, `unzip /data/S-FFSD.zip` and `unzip /data/IBM.zip`to unzip the datasets; 
 2. Run `python feature_engineering/data_process.py`
 3. If you just want to use FFSD and IBM dataset with `GTAN` and `GGTAN` method, then run `python feature_engineering/data_process_ggtan.py`
 
 to pre-process all datasets needed in this repo.
 
 ### Training & Evalutaion
-<!-- 
-To use fraud detection baselines including GBDT, LSTM, etc., simply run
-
-```
-python main.py --method LSTM
-python main.py  --method GBDT
-```
-You may change relevant configurations in `config/base_cfg.yaml`. -->
 
 To test implementations of `MCNN`, `STAN` and `STAGN`, run
 ```
