@@ -20,10 +20,10 @@ Source codes implementation of papers:
 
 ### Data processing
 1. Run `unzip /data/Amazon.zip`, `unzip /data/YelpChi.zip`, `unzip /data/S-FFSD.zip` and `unzip /data/IBM.zip`to unzip the datasets; 
-2. Run `python feature_engineering/data_process.py`
+2. Run `python feature_engineering/data_process.py` to pre-process all datasets needed in this repo.
 	* If you just want to use FFSD and IBM dataset with `GTAN` and `GGTAN` method, then run `python feature_engineering/data_process_ggtan.py`
 
-to pre-process all datasets needed in this repo.
+
 
 ### Training & Evalutaion
 
