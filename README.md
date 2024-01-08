@@ -13,6 +13,7 @@ Source codes implementation of papers:
 - `GTAN`: Semi-supervised Credit Card Fraud Detection via Attribute-driven Graph Representation, in AAAI2023
 - `RGTAN`: Enhancing Attribute-driven Fraud Detection with Risk-aware Graph Representation
 - `GGTAN`: GGTAN: A Novel GAT-Enhanced Graph Temporal Attention Network for Advanced Fraud Detection in Financial Transactions
+	- [Project Link](https://drive.google.com/file/d/1P_loGSXID4GVcWVcSwu6gA3n2Bqn8ElX/view?usp=sharing)
 
 
 
