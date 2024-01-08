@@ -11,7 +11,7 @@ Source codes implementation of papers:
 - `STAN`: Spatio-temporal attention-based neural network for credit card fraud detection, in AAAI2020
 - `STAGN`: Graph Neural Network for Fraud Detection via Spatial-temporal Attention, in TKDE2020
 - `GTAN`: Semi-supervised Credit Card Fraud Detection via Attribute-driven Graph Representation, in AAAI2023
-- `RGTAN`: Enhancing Attribute-driven Fraud Detection with Risk-aware Graph Representation, 
+- `RGTAN`: Enhancing Attribute-driven Fraud Detection with Risk-aware Graph Representation
 - `GGTAN`: GGTAN: A Novel GAT-Enhanced Graph Temporal Attention Network for Advanced Fraud Detection in Financial Transactions
 
 
